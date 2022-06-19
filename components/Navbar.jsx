@@ -36,8 +36,7 @@ const Navbar = () => {
             />
           </a>
         </Link>
-
-        <p className='p-4'>Browse</p>
+        <p className='p-4 font-bold hover:text-[#9147ff]'>Browse</p>
         <div className='p-4'>
           <Menu as='div' className='relative text-left'>
             <div className='flex'>
@@ -108,10 +107,9 @@ const Navbar = () => {
           </Menu>
         </div>
       </div>
-
       {/* Middle */}
       <div className='hidden md:flex grow-[2] items-center justify-center'>
-        <div className='bg-gray-500 text-white flex justify-between items-center max-width-[400px] w-full m-auto p-2 rounded-2xl '>
+        <div className='bg-gray-500 text-white flex justify-between items-center max-w-[400px] w-full m-auto p-2 rounded-2xl'>
           <div>
             <input
               type='text'
@@ -124,8 +122,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
-      {/* Right Side  */}
+      {/* Right Side */}
       <div className='hidden md:flex grow items-center justify-end'>
         {session ? (
           <div className='flex items-center'>
@@ -141,10 +138,10 @@ const Navbar = () => {
                 <Menu.Button>
                   <Image
                     src={session.user.image}
-                    alt='/'
                     width='45'
                     height='45'
                     className='rounded-full'
+                    alt='/'
                   />
                 </Menu.Button>
               </div>
@@ -162,8 +159,7 @@ const Navbar = () => {
                   <div className='py-1'>
                     <Menu.Item>
                       {({ active }) => (
-                        <a
-                          href='/account'
+                        <p
                           className={classNames(
                             active
                               ? 'bg-gray-500 text-gray-100'
@@ -171,10 +167,11 @@ const Navbar = () => {
                             'block px-4 py-2 text-sm'
                           )}
                         >
-                          Account
-                        </a>
+                          <Link href='/account'>Account</Link>
+                        </p>
                       )}
                     </Menu.Item>
+
                     <Menu.Item>
                       {({ active }) => (
                         <p
@@ -206,11 +203,13 @@ const Navbar = () => {
           </div>
         )}
       </div>
-      {/* Hamburger Menu  */}
+
+      {/* Hamburger Menu */}
       <div onClick={handleNav} className='block md:hidden z-10 cursor-pointer'>
         {nav ? <AiOutlineClose size={25} /> : <AiOutlineMenu size={25} />}
       </div>
-      {/* Mobile Menu  */}
+
+      {/* Mobile Menu */}
       <div
         className={
           nav
@@ -219,17 +218,17 @@ const Navbar = () => {
         }
       >
         <ul className='text-center'>
-          <li className='p-4 text-3xl font-bold'>
+          <li onClick={() => setNav(false)} className='p-4 text-3xl font-bold'>
             <Link href='/'>Home</Link>
           </li>
-          <li className='p-4 text-3xl font-bold'>
-            <Link href='/'>Live Channels</Link>
+          <li onClick={() => setNav(false)} className='p-4 text-3xl font-bold'>
+            <Link href='/#live'>Live Channels</Link>
           </li>
-          <li className='p-4 text-3xl font-bold'>
-            <Link href='/'>Top Categories</Link>
+          <li onClick={() => setNav(false)} className='p-4 text-3xl font-bold'>
+            <Link href='/#categories'>Top Categories</Link>
           </li>
-          <li className='p-4 text-3xl font-bold'>
-            <Link href='/account'>Account</Link>
+          <li onClick={() => setNav(false)} className='p-4 text-3xl font-bold'>
+            <Link href='/account'>account</Link>
           </li>
         </ul>
       </div>
